@@ -1,0 +1,30 @@
+syntax = "proto3";
+option go_package = ".;productservice";
+
+package proto;
+
+service Product {
+  rpc Import (ImportRequest) returns (ImportResponse) {}
+}
+
+message Shop {
+  int64 shopID = 2;
+  string myshopifyDomain = 3;
+  string accessToken = 4;
+}
+
+message Database {
+  string URI = 1;
+  string database = 2;
+  string productCollection = 3;
+}
+
+message ImportRequest {
+  string appID = 1;
+  Shop shop = 2;
+  Database database = 3;
+}
+
+message ImportResponse {
+  string message = 1;
+}
